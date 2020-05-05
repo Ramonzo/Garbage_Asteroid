@@ -1,11 +1,11 @@
 //****FONT****//
 let loadedFonts = [];
-let fontFolder = 'assets/fonts/';
-let fontFormat = '.ttf';
-let fontName = [];
+const fontFolder = 'assets/fonts/';
+const fontFormat = '.ttf';
+let fontNames = [];
 //****IMAGES****//
-let imgFolder = 'assets/img/';
-let imgFormat = '.png';
+const imgFolder = 'assets/img/';
+const imgFormat = '.png';
 let imageNames = [];
 let loadedImages = [];
 let imgFloor;
@@ -15,10 +15,10 @@ let totalAssets = 0;
 let assetsCounter = 0;
 //****PRELOADER****///
 function preload(){
-  fontName = ['hypervipergradital'];
+  fontNames = ['hypervipergradital', 'hyperviper', 'hyperviper3d'];
   imageNames = ['fish', 'flower', 'fly', 'game', 'guy', 'marketcar', 'melt', 'mouse', 'pc', 
                 'phone', 'pill', 'sad', 'shapes', 'slow', 'sound', 'tree', 'verticalshape', 'window'];
-  totalAssets = imageNames.length + fontName.length;
+  totalAssets = imageNames.length + fontNames.length;
 }
 //****SETUP****///
 function setup() {
@@ -27,7 +27,7 @@ function setup() {
 //****DRAW****///
 function draw() {
   if(loading){
-    createLoader(assetsCounter/totalAssets);
+    createLoader();
   }else{
   }
 }

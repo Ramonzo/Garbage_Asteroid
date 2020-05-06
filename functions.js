@@ -25,6 +25,9 @@ function loadAsset(){
 //Function to resize canvas screen
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  for(i = 0; i < asteroids.length; i++){
+    asteroids.update();
+  }
   planet.update();
   floor.update();
   player.update();

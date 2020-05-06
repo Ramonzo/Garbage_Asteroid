@@ -48,7 +48,7 @@ function setup() {
   planet = new Planet();
   player = new Player();
   floor = new Floor();
-  asteroids[0] = new Asteroid();
+  asteroids.push(new Asteroid());
   
 }
 //****DRAW****///
@@ -66,4 +66,7 @@ function draw() {
       break;
     }
   }
+}
+function mousePressed(){
+  asteroids.push(new Asteroid());
 }

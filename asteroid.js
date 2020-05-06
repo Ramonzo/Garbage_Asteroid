@@ -16,6 +16,7 @@ class Asteroid{
     this.endY = planet.getPos()[1];
     this.distX = this.endX - this.beginX;
     this.distY = this.endY - this.beginY;
+    this.life = 20;
   }
   draw(){
     imageMode(CENTER);
@@ -30,7 +31,7 @@ class Asteroid{
   }
   damaged(){
   }
-  collision(){
+  collision(x, y){
   }
   update(){
     this.size = [windowWidth, (windowHeight*8)/100];
@@ -41,5 +42,8 @@ class Asteroid{
   }
   getPos(){
     return [this.x, this.y];
+  }
+  getLife(){
+    return this.life;
   }
 }

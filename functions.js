@@ -1,6 +1,9 @@
 function moveThings(){
   for(i = 0; i < asteroids.length; i++){
     asteroids[i].move();
+    if(planet.collision(asteroids[i].getPos(), asteroids[i].getLife())){
+      asteroids.splice(i, 1);
+    }
   }
   player.move();
 }

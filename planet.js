@@ -9,4 +9,7 @@ class Planet{
     imageMode(CENTER);
     image(planetImage, this.x, this.y, this.size, this.size);
   }
+  getPos(){
+    return [this.x, this.y];
+  }
 }

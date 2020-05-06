@@ -1,5 +1,5 @@
 //****GAME CONFIGURATIONS****//
-let state = menu;
+let state = 'menu';
 //****FONT****//
 let loadedFonts = [];
 const fontFolder = 'assets/fonts/';
@@ -12,7 +12,7 @@ let imageNames = [];
 let loadedImages = [];
 let imgFloor;
 //Planet
-let planetImageName = 'planet';
+let planetImageName = ['planet'];
 let planetImage;
 let planet;
 //****LOADER****//
@@ -28,16 +28,20 @@ function preload(){
 }
 //****SETUP****///
 function setup() {
+  frameRate(30);
+  var canvas = createCanvas(windowWidth, windowHeight);
   planet = new Planet();
-  loadAsset(); //Executa no final do setup, para garantir que o resto já foi processado antes do 100%;
+  loadAsset(); //Execute this on the end of setup. To make sure the rest was loaded
 }
 //****DRAW****///
 function draw() {
+  background(0);
   if(loading){
     createLoader();
   }else{
     switch(state){
       case 'menu':
+        planet.draw();
       break;
       case 'gameplay':
       break;

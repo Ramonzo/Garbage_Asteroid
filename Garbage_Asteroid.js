@@ -15,6 +15,9 @@ let imgFloor;
 let planetImageName = ['planet'];
 let planetImage;
 let planet;
+let playerImageName = ['ship'];
+let playerImage;
+let player;
 //****LOADER****//
 let loading = true;
 let totalAssets = 0;
@@ -24,13 +27,15 @@ function preload(){
   fontNames = ['hypervipergradital', 'hyperviper', 'hyperviper3d'];
   imageNames = ['fish', 'flower', 'fly', 'game', 'guy', 'marketcar', 'melt', 'mouse', 'pc', 
                 'phone', 'pill', 'sad', 'shapes', 'slow', 'sound', 'tree', 'verticalshape', 'window'];
-  totalAssets = imageNames.length + fontNames.length + planetImageName.length;
+  totalAssets = imageNames.length + fontNames.length + planetImageName.length + playerImageName.length;
 }
 //****SETUP****///
 function setup() {
   frameRate(30);
+  imageMode(CENTER);
   var canvas = createCanvas(windowWidth, windowHeight);
   planet = new Planet();
+  player = new Player();
   loadAsset(); //Execute this on the end of setup. To make sure the rest was loaded
 }
 //****DRAW****///

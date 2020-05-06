@@ -47,6 +47,8 @@ function draw() {
     switch(state){
       case 'menu':
         planet.draw();
+        player.move();
+        player.draw();
       break;
       case 'gameplay':
       break;

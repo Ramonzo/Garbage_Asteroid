@@ -4,7 +4,7 @@ let state = 'menu';
 let loadedFonts = [];
 const fontFolder = 'assets/fonts/';
 const fontFormat = '.ttf';
-let fontNames = [];
+let fontNames = ['hypervipergradital'];
 //****IMAGES****//
 const imgFolder = 'assets/img/';
 const imgFormat = '.png';
@@ -36,10 +36,16 @@ function preload(){
 function setup() {
   frameRate(30);
   imageMode(CENTER);
+  //Configure css para o body
+  var body = select('body');
+  body.style('font-family', fontNames[0]);
+  //Set Canvas
   var canvas = createCanvas(windowWidth, windowHeight);
+  //Call Classes
   planet = new Planet();
   player = new Player();
   floor = new Floor();
+  //LOADER//
   loadAsset(); //Execute this on the end of setup. To make sure the rest was loaded
 }
 //****DRAW****///

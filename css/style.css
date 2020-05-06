@@ -1,0 +1,21 @@
+/* W3SCHOOL MEDIA QUERY https://www.w3schools.com/cssref/css3_pr_mediaquery.asp */
+/*
+CSS para tags HTML
+*/
+body { 
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+	color:inherit;
+} 
+button, 
+div,
+input, select,
+h1, h2, h3, h4, h5, h6, 
+p,
+span, 
+a{
+	font-family: inherit;
+}

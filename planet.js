@@ -24,8 +24,8 @@ class Planet{
     }
   }
   collision(pos, d){
-    if(pos[0] >= (this.x - this.size) && pos[0] <= (this.x + this.size) && 
-       pos[1] >= (this.y - this.size) && pos[1] <= (this.y + this.size)){
+    if(pos[0] >= (this.x - (this.size/2)) && pos[0] <= (this.x + (this.size/2)) && 
+       pos[1] >= (this.y - (this.size/2)) && pos[1] <= (this.y + (this.size/2))){
          this.damage(d);
          return true;
     }

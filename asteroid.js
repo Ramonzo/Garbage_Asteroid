@@ -29,9 +29,20 @@ class Asteroid{
       this.y = this.beginY + this.pct * this.distY;
     }
   }
-  damaged(){
+  damage(d){
+    if(this.life - d < 0){
+      this.life = 0;
+    }else{
+      this.life -= d;
+    }
   }
-  collision(x, y){
+  collision(pos, d){
+    if(pos[0] >= (this.x - this.size) && pos[0] <= (this.x + this.size) && 
+       pos[1] >= (this.y - this.size) && pos[1] <= (this.y + this.size)){
+         this.damage(d);
+         return true;
+    }
+    return false;
   }
   update(){
     this.size = [windowWidth, (windowHeight*8)/100];

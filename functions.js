@@ -8,6 +8,7 @@ function loadAsset(){
   }
   planetImage = loadImage(imgFolder+planetImageName[0]+imgFormat, img => {assetsCounter++;});
   playerImage = loadImage(imgFolder+playerImageName[0]+imgFormat, img => {assetsCounter++;});
+  floorImage = loadImage(imgFolder+floorImageName[0]+imgFormat, img => {assetsCounter++;});
 }
 //Function to resize canvas screen
 function windowResized() {

@@ -10,11 +10,12 @@ const imgFolder = 'assets/img/';
 const imgFormat = '.png';
 let imageNames = [];
 let loadedImages = [];
-let imgFloor;
 //Planet
 let planetImageName = ['planet'];
 let planetImage;
 let planet;
+let floorImageName = ['floor'];
+let floorImage;
 let playerImageName = ['ship'];
 let playerImage;
 let player;
@@ -27,7 +28,8 @@ function preload(){
   fontNames = ['hypervipergradital', 'hyperviper', 'hyperviper3d'];
   imageNames = ['fish', 'flower', 'fly', 'game', 'guy', 'marketcar', 'melt', 'mouse', 'pc', 
                 'phone', 'pill', 'sad', 'shapes', 'slow', 'sound', 'tree', 'verticalshape', 'window'];
-  totalAssets = imageNames.length + fontNames.length + planetImageName.length + playerImageName.length;
+  totalAssets = imageNames.length + fontNames.length + planetImageName.length + playerImageName.length + 
+                floorImageName.length;
 }
 //****SETUP****///
 function setup() {

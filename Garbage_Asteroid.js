@@ -16,6 +16,7 @@ let planetImage;
 let planet;
 let floorImageName = ['floor'];
 let floorImage;
+let floor;
 let playerImageName = ['ship'];
 let playerImage;
 let player;
@@ -38,6 +39,7 @@ function setup() {
   var canvas = createCanvas(windowWidth, windowHeight);
   planet = new Planet();
   player = new Player();
+  floor = new Floor();
   loadAsset(); //Execute this on the end of setup. To make sure the rest was loaded
 }
 //****DRAW****///
@@ -49,6 +51,7 @@ function draw() {
     switch(state){
       case 'menu':
         planet.draw();
+        floor.draw();
         player.move();
         player.draw();
       break;

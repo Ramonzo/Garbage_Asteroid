@@ -14,5 +14,6 @@ function loadAsset(){
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   planet.update();
+  floor.update();
   player.update();
 }

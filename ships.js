@@ -16,7 +16,10 @@ class Player{
     print(this.angle);
   }
   move(){
-    this.angle = atan2(mouseY - this.y, mouseX - this.x);
+    let newAngle = atan2(mouseY - this.y, mouseX - this.x);
+    if(!(newAngle > -0.1 && newAngle < 3.1)){
+      this.angle = newAngle;
+    }
   }
   update(){
     this.x = planet.getPos()[0];

@@ -2,13 +2,10 @@
 class Planet{
   constructor(){
     this.x = windowWidth/2;
-    this.y = windowHeight/2;
-    this.size = (windowWidth*10)/100;
+    this.y = (windowHeight*75)/100;
+    this.size = (windowWidth*15)/100;
   }
   draw(){
-    this.x = windowWidth/2;
-    this.y = windowHeight/2;
-    this.size = (windowWidth*10)/100;
     imageMode(CENTER);
     image(planetImage, this.x, this.y, this.size, this.size);
   }

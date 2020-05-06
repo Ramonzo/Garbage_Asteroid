@@ -6,6 +6,7 @@ function loadAsset(){
   for(i = 0; i < fontNames.length; i++){
     loadedFonts.push(loadFont(fontFolder+fontNames[i]+fontFormat, font => {assetsCounter++;}));
   }
+  planetImage = loadImage(imgFolder+planetImageName+imgFormat, img => {assetsCounter++;});
 }
 //Function to resize canvas screen
 function windowResized() {

@@ -12,4 +12,6 @@ function loadAsset(){
 //Function to resize canvas screen
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  planet.update();
+  player.update();
 }

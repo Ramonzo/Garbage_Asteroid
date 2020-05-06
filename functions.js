@@ -1,3 +1,15 @@
+function moveThings(){
+  for(i = 0; i < asteroids.length; i++){
+    asteroids.move();
+  }
+  player.move();
+}
+function drawThings(){
+  planet.draw();
+  floor.draw();
+  asteroids.draw();
+  player.draw();
+}
 //Function to load assets and make loader works okay
 function loadAsset(){
   for(i = 0; i < imageNames.length; i++){

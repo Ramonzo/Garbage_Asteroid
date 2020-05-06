@@ -20,6 +20,7 @@ let floor;
 let playerImageName = ['ship'];
 let playerImage;
 let player;
+let asteroids = [];
 //****LOADER****//
 let loading = true;
 let totalAssets = 0;
@@ -45,6 +46,7 @@ function setup() {
   planet = new Planet();
   player = new Player();
   floor = new Floor();
+  asteroids[0] = new Asteroid();
   //LOADER//
   loadAsset(); //Execute this on the end of setup. To make sure the rest was loaded
 }
@@ -56,10 +58,8 @@ function draw() {
   }else{
     switch(state){
       case 'menu':
-        planet.draw();
-        floor.draw();
-        player.move();
-        player.draw();
+        moveThings();
+        drawThings();
       break;
       case 'gameplay':
       break;

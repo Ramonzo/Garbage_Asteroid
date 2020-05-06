@@ -13,11 +13,10 @@ class Player{
       imageMode(CENTER);
       image(playerImage, planet.getSize()/2, planet.getSize()/2, this.size, this.size);
     pop();
-    print(this.angle);
   }
   move(){
     let newAngle = atan2(mouseY - this.y, mouseX - this.x);
-    if(!(newAngle > -0.1 && newAngle < 3.1)){
+    if(!(newAngle > -0.1 && newAngle < 3.2)){
       this.angle = newAngle;
     }
   }

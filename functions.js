@@ -1,13 +1,15 @@
 function moveThings(){
   for(i = 0; i < asteroids.length; i++){
-    asteroids.move();
+    asteroids[i].move();
   }
   player.move();
 }
 function drawThings(){
   planet.draw();
   floor.draw();
-  asteroids.draw();
+  for(i = 0; i < asteroids.length; i++){
+    asteroids[i].draw();
+  }
   player.draw();
 }
 //Function to load assets and make loader works okay
@@ -26,7 +28,7 @@ function loadAsset(){
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   for(i = 0; i < asteroids.length; i++){
-    asteroids.update();
+    asteroids[i].update();
   }
   planet.update();
   floor.update();

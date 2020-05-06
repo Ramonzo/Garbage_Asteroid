@@ -2,7 +2,7 @@
 class Asteroid{
   constructor(){
     this.x = random(-100, windowWidth+100);
-    if(this.x < 0 || this.x > windowsWidth){
+    if(this.x < 0 || this.x > windowWidth){
       this.y = random(0, (windowHeight*70)/100);
     }else{
       this.y = random(-100, 0);
@@ -10,22 +10,22 @@ class Asteroid{
     this.size = (windowHeight*8)/100;
     this.image = random(loadedImages);
     this.pct = 0.0;
-    this.beginX = x;
-    this.beginY = y;
+    this.beginX = this.x;
+    this.beginY = this.y;
     this.endX = planet.getPos()[0];
     this.endY = planet.getPos()[1];
-    this.distX = endX - beginX;
-    this.distY = endY - beginY;
+    this.distX = this.endX - this.beginX;
+    this.distY = this.endY - this.beginY;
   }
   draw(){
     imageMode(CENTER);
-    image(image, this.x, this.y, this.size, this.size);
+    image(this.image, this.x, this.y, this.size, this.size);
   }
   move(){
-    pct += 0.01;
-    if (pct < 1.0) {
-      x = beginX + pct * distX;
-      y = beginY + pct * distY;
+    this.pct += 0.01;
+    if (this.pct < 1.0) {
+      this.x = this.beginX + this.pct * this.distX;
+      this.y = this.beginY + this.pct * this.distY;
     }
   }
   damaged(){
@@ -36,8 +36,8 @@ class Asteroid{
     this.size = [windowWidth, (windowHeight*8)/100];
     this.endX = planet.getPos()[0];
     this.endY = planet.getPos()[1];
-    this.distX = endX - beginX;
-    this.distY = endY - beginY;
+    this.distX = this.endX - this.beginX;
+    this.distY = this.endY - this.beginY;
   }
   getPos(){
     return [this.x, this.y];

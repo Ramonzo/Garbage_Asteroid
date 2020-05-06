@@ -42,13 +42,14 @@ function setup() {
   body.style('font-family', fontNames[0]);
   //Set Canvas
   var canvas = createCanvas(windowWidth, windowHeight);
+  //LOADER//
+  loadAsset(); //Execute first
   //Call Classes
   planet = new Planet();
   player = new Player();
   floor = new Floor();
   asteroids[0] = new Asteroid();
-  //LOADER//
-  loadAsset(); //Execute this on the end of setup. To make sure the rest was loaded
+  
 }
 //****DRAW****///
 function draw() {

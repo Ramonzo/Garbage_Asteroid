@@ -7,8 +7,8 @@ class Bullet{
     this.pct = 0.0;
     this.beginX = this.x;
     this.beginY = this.y;
-    this.endX = mouseX;
-    this.endY = mouseY;
+    this.endX = planet.getPos()[0];
+    this.endY = planet.getPos()[1];
     this.distX = this.endX - this.beginX;
     this.distY = this.endY - this.beginY;
   }
@@ -19,8 +19,8 @@ class Bullet{
   }
   move(){
     this.pct += 0.01;
-    this.x = this.beginX + this.pct * this.distX;
-    this.y = this.beginY + this.pct * this.distY;
+    this.x = this.beginX - this.pct * this.distX;
+    this.y = this.beginY - this.pct * this.distY;
   }
   getPos(){
     return [this.x, this.y];

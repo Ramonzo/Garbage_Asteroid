@@ -22,7 +22,11 @@ class Player{
     }
     for(i = 0; i < this.bullet.length; i++){
       this.bullet[i].move();
+      if((this.bullet[i].getPos()[0] < 0 || this.bullet[i].getPos()[1] < 0) || (this.bullet[i].getPos()[0] > windowWidth || this.bullet[i].getPos()[1] > windowHeight)){
+        this.bullet.splice(i, 1);
+      }
     }
+    print(this.bullet.length);
   }
   update(){
     this.x = planet.getPos()[0];

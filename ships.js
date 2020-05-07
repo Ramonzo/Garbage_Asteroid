@@ -10,7 +10,7 @@ class Player{
   draw(){
     imageMode(CENTER);
     image(playerImage, this.x, this.y, this.size, this.size);
-    for(i = 0; i < this.bullet.length; i++){
+    for(let i = 0; i < this.bullet.length; i++){
       this.bullet[i].draw();
     }
   }
@@ -20,10 +20,23 @@ class Player{
       this.x = planet.getPos()[0] + cos(newAngle) * (planet.getSize()*70/100);
       this.y = planet.getPos()[1] + sin(newAngle) * (planet.getSize()*70/100);
     }
-    for(i = 0; i < this.bullet.length; i++){
+    for(let i = 0; i < this.bullet.length; i++){
       this.bullet[i].move();
       if((this.bullet[i].getPos()[0] < 0 || this.bullet[i].getPos()[1] < 0) || (this.bullet[i].getPos()[0] > windowWidth || this.bullet[i].getPos()[1] > windowHeight)){
         this.bullet.splice(i, 1);
+      }else{
+        for(let j = 0; j < asteroids.length; j++){
+          if(this.bullet[i].getPos()[0] >= (asteroids[j].getPos()[0] - (asteroids[j].getSize()/2)) && 
+             this.bullet[i].getPos()[0] <= (asteroids[j].getPos()[0] + (asteroids[j].getSize()/2)) && 
+             this.bullet[i].getPos()[1] >= (asteroids[j].getPos()[1] - (asteroids[j].getSize()/2)) && 
+             this.bullet[i].getPos()[1] <= (asteroids[j].getPos()[1] + (asteroids[j].getSize()/2))){
+               asteroids[j].damage(this.bullet[i].getDamage());
+               if(asteroids[j].getLife() <= 0){
+                 asteroids.splice(j, 1);
+               }
+               this.bullet.splice(i, 1);
+          }
+        }
       }
     }
     print(this.bullet.length);

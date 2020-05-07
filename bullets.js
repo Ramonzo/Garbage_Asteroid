@@ -11,6 +11,7 @@ class Bullet{
     this.endY = planet.getPos()[1];
     this.distX = this.endX - this.beginX;
     this.distY = this.endY - this.beginY;
+    this.damage = 10;
   }
   draw(){
     ellipseMode(CENTER);
@@ -18,7 +19,7 @@ class Bullet{
     ellipse(this.x, this.y, this.size, this.size);
   }
   move(){
-    this.pct += 0.01;
+    this.pct += 0.5;
     this.x = this.beginX - this.pct * this.distX;
     this.y = this.beginY - this.pct * this.distY;
   }
@@ -27,5 +28,8 @@ class Bullet{
   }
   getSize(){
     return this.size;
+  }
+  getDamage(){
+    return this.damage;
   }
 }

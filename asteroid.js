@@ -54,6 +54,9 @@ class Asteroid{
   getPos(){
     return [this.x, this.y];
   }
+  getSize(){
+    return this.size;
+  }
   getLife(){
     return this.life;
   }

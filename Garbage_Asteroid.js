@@ -68,5 +68,5 @@ function draw() {
   }
 }
 function mousePressed(){
-  asteroids.push(new Asteroid());
+  player.shot();
 }

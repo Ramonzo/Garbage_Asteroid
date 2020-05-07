@@ -5,19 +5,23 @@ class Player{
     this.y = planet.getPos()[1];
     this.size = (windowWidth*2)/100;
     this.angle = 0;
+    this.bullet = [];
   }
   draw(){
-    push();
-      translate(this.x, this.y);
-      rotate(this.angle-0.75);
-      imageMode(CENTER);
-      image(playerImage, planet.getSize()/2, planet.getSize()/2, this.size, this.size);
-    pop();
+    imageMode(CENTER);
+    image(playerImage, this.x, this.y, this.size, this.size);
+    for(i = 0; i < this.bullet.length; i++){
+      this.bullet[i].draw();
+    }
   }
   move(){
-    let newAngle = atan2(mouseY - this.y, mouseX - this.x);
-    if(!(newAngle > -0.1 && newAngle < 3.2)){
-      this.angle = newAngle;
+    let newAngle = atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]);
+    if(!(newAngle < 3.1 && newAngle > 0.1)){
+      this.x = planet.getPos()[0] + cos(newAngle) * (planet.getSize()*70/100);
+      this.y = planet.getPos()[1] + sin(newAngle) * (planet.getSize()*70/100);
+    }
+    for(i = 0; i < this.bullet.length; i++){
+      this.bullet[i].move();
     }
   }
   update(){
@@ -25,8 +29,14 @@ class Player{
     this.y = planet.getPos()[1];
     this.size = (windowWidth*2)/100;
   }
+  shot(){
+    this.bullet.push(new Bullet());
+  }
   getPos(){
+    return [this.x, this.y];
   }
   setPos(pos){
+    this.x = pos[0];
+    this.y = pos[1];
   }
 }

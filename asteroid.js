@@ -10,6 +10,7 @@ class Asteroid{
     this.size = (windowHeight*8)/100;
     this.image = random(loadedImages);
     this.pct = 0.0;
+    this.velocity = 0.001;
     this.beginX = this.x;
     this.beginY = this.y;
     this.endX = planet.getPos()[0];
@@ -23,7 +24,7 @@ class Asteroid{
     image(this.image, this.x, this.y, this.size, this.size);
   }
   move(){
-    this.pct += 0.01;
+    this.pct += this.velocity;
     if (this.pct < 1.0) {
       this.x = this.beginX + this.pct * this.distX;
       this.y = this.beginY + this.pct * this.distY;
@@ -59,5 +60,8 @@ class Asteroid{
   }
   getLife(){
     return this.life;
+  }
+  setVelocity(v){
+    this.velocity = v;
   }
 }

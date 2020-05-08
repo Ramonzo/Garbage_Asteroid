@@ -37,4 +37,7 @@ class Planet{
   getSize(){
     return this.size;
   }
+  getLife(){
+    return this.life;
+  }
 }

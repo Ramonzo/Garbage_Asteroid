@@ -1,19 +1,31 @@
+function evolveWave(){
+  if(asteroids.length <= 0 && planet.getLife() > 0){
+    wave++;
+    createAsteroids();
+  }
+}
+function createAsteroids(){
+  let asteroidCount = 3*wave;
+  for(let i = 0; i < asteroidCount; i++){
+    asteroids[i] = new Asteroid();
+  }
+}
 function moveThings(){
+  player.move();
   for(let i = 0; i < asteroids.length; i++){
     asteroids[i].move();
     if(planet.collision(asteroids[i].getPos(), asteroids[i].getLife())){
       asteroids.splice(i, 1);
     }
   }
-  player.move();
 }
 function drawThings(){
   planet.draw();
   floor.draw();
+  player.draw();
   for(let i = 0; i < asteroids.length; i++){
     asteroids[i].draw();
   }
-  player.draw();
 }
 //Function to load assets and make loader works okay
 function loadAsset(){

@@ -1,5 +1,6 @@
 //****GAME CONFIGURATIONS****//
-let state = 'menu';
+let state = 'gameplay';
+let wave = 0;
 //****FONT****//
 let loadedFonts = [];
 const fontFolder = 'assets/fonts/';
@@ -46,8 +47,6 @@ function setup() {
   planet = new Planet();
   player = new Player();
   floor = new Floor();
-  asteroids.push(new Asteroid());
-  
 }
 //****DRAW****///
 function draw() {
@@ -57,10 +56,11 @@ function draw() {
   }else{
     switch(state){
       case 'menu':
-        moveThings();
-        drawThings();
       break;
       case 'gameplay':
+        evolveWave();
+        moveThings();
+        drawThings();
       break;
     }
   }

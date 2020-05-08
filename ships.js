@@ -10,8 +10,10 @@ class Player{
     this.moment = -1;
   }
   draw(){
+    //Draw flame
     fill(color('#FD9301'));
     triangle(this.moveX(50+this.moment, 0), this.moveY(50+this.moment, 0), this.moveX(57, -0.1), this.moveY(57, -0.1), this.moveX(57, +0.1), this.moveY(57, +0.1));
+    //Draw ship
     fill(color('#D175B7'));
     triangle(this.moveX(60, 0), this.moveY(60, 0), this.moveX(55, -0.2), this.moveY(55, -0.2), this.moveX(55, +0.2), this.moveY(55, +0.2));
     fill(255);
@@ -30,6 +32,7 @@ class Player{
       this.bullet[i].move();
       if((this.bullet[i].getPos()[0] < 0 || this.bullet[i].getPos()[1] < 0) || (this.bullet[i].getPos()[0] > windowWidth || this.bullet[i].getPos()[1] > windowHeight)){
         this.bullet.splice(i, 1);
+        break;
       }else{
         for(let j = 0; j < asteroids.length; j++){
           if(this.bullet[i].getPos()[0] >= (asteroids[j].getPos()[0] - (asteroids[j].getSize()/2)) && 
@@ -41,6 +44,7 @@ class Player{
                  asteroids.splice(j, 1);
                }
                this.bullet.splice(i, 1);
+               break;
           }
         }
       }

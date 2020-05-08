@@ -24,7 +24,6 @@ function loadAsset(){
     loadedFonts.push(loadFont(fontFolder+fontNames[i]+fontFormat, font => {assetsCounter++;}));
   }
   planetImage = loadImage(imgFolder+planetImageName[0]+imgFormat, img => {assetsCounter++;});
-  playerImage = loadImage(imgFolder+playerImageName[0]+imgFormat, img => {assetsCounter++;});
   floorImage = loadImage(imgFolder+floorImageName[0]+imgFormat, img => {assetsCounter++;});
 }
 //Function to resize canvas screen

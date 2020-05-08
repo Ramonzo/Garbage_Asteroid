@@ -17,9 +17,6 @@ let planet;
 let floorImageName = ['floor'];
 let floorImage;
 let floor;
-let playerImageName = ['ship'];
-let playerImage;
-let player;
 let asteroids = [];
 //****LOADER****//
 let loading = true;
@@ -30,13 +27,14 @@ function preload(){
   fontNames = ['hypervipergradital', 'hyperviper', 'hyperviper3d'];
   imageNames = ['fish', 'flower', 'fly', 'game', 'guy', 'marketcar', 'melt', 'mouse', 'pc', 
                 'phone', 'pill', 'sad', 'shapes', 'slow', 'sound', 'tree', 'verticalshape', 'window'];
-  totalAssets = imageNames.length + fontNames.length + planetImageName.length + playerImageName.length + 
-                floorImageName.length;
+  totalAssets = imageNames.length + fontNames.length + planetImageName.length + floorImageName.length;
 }
 //****SETUP****///
 function setup() {
   frameRate(30);
   imageMode(CENTER);
+  rectMode(CENTER);
+  noStroke();
   //Configure css para o body
   var body = select('body');
   body.style('font-family', fontNames[0]);

@@ -1,6 +1,8 @@
 //****GAME CONFIGURATIONS****//
 let state = 'gameplay';
 let wave = 0;
+let player;
+let ships = [];
 //****FONT****//
 let loadedFonts = [];
 const fontFolder = 'assets/fonts/';
@@ -66,5 +68,5 @@ function draw() {
   }
 }
 function mousePressed(){
-  player.shot();
+  ships.push(new Ship());
 }

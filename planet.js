@@ -9,7 +9,6 @@ class Planet{
   draw(){
     imageMode(CENTER);
     image(planetImage, this.x, this.y, this.size, this.size);
-    text(this.life, this.x, this.y);
   }
   update(){
     this.x = windowWidth/2;

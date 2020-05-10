@@ -68,5 +68,5 @@ function draw() {
   }
 }
 function mousePressed(){
-  ships.push(new Ship());
+  ships.push(new NpcShip());
 }

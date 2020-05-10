@@ -1,13 +1,36 @@
-//The Player Class
-class Player{
+//The All Ship Class, including Player Ship
+class Ship{
   constructor(){
     this.x = planet.getPos()[0];
     this.y = planet.getPos()[1];
     this.size = (windowWidth*2)/100;
-    this.angle = 0;
     this.bullet = [];
+    this.actualAngle = 0;
     this.newAngle = 0;
-    this.fireFlame = -1;
+    this.fireFlame = 1;
+  }
+  moveX(percent, angle){
+    return planet.getPos()[0] + cos(this.actualAngle+angle) * (planet.getSize()*percent/100);
+  }
+  moveY(percent, angle){
+    return planet.getPos()[1] + sin(this.actualAngle+angle) * (planet.getSize()*percent/100);
+  }
+  update(){
+    this.x = planet.getPos()[0];
+    this.y = planet.getPos()[1];
+    this.size = (windowWidth*2)/100;
+  }
+  shot(){
+    this.bullet.push(new Bullet());
+  }
+  getPos(){
+    return [this.x, this.y];
+  }
+}
+//The Player Class
+class Player extends Ship{
+  constructor(){
+    super();
   }
   draw(){
     //Draw flame
@@ -24,6 +47,7 @@ class Player{
   }
   move(){
     if(!(atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]) < 3.1 && atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]) > 0.1)){
+      this.actualAngle = this.newAngle;
       this.newAngle = atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]);
       this.x = this.moveX(55, 0);
       this.y = this.moveY(55, 0);
@@ -50,40 +74,16 @@ class Player{
       }
     }
   }
-  moveX(percent, angle){
-    return planet.getPos()[0] + cos(this.newAngle+angle) * (planet.getSize()*percent/100);
-  }
-  moveY(percent, angle){
-    return planet.getPos()[1] + sin(this.newAngle+angle) * (planet.getSize()*percent/100);
-  }
-  update(){
-    this.x = planet.getPos()[0];
-    this.y = planet.getPos()[1];
-    this.size = (windowWidth*2)/100;
-  }
-  shot(){
-    this.bullet.push(new Bullet());
-  }
-  getPos(){
-    return [this.x, this.y];
-  }
-  setPos(pos){
-    this.x = pos[0];
-    this.y = pos[1];
-  }
 }
-//The Ships Class
-class Ship{
+//The Auxiliar Ship Class
+class NpcShip extends Ship{
   constructor(){
-    this.x = planet.getPos()[0];
-    this.y = planet.getPos()[1];
-    this.size = (windowWidth*2)/100;
-    this.angle = 0;
-    this.bullet = [];
-    this.newAngle = 0;
-    this.fireFlame = -1;
+    super();
     this.fixed = false;
     this.fixedPos = [mouseX, mouseY];
+    this.pct = 0.0;
+    this.movVel = 0.01;
+    this.previousAngle = 0;
   }
   draw(){
     //Draw flame
@@ -98,20 +98,32 @@ class Ship{
     }
     this.fireFlame = -this.fireFlame;
   }
+  moving(){
+    this.pct += this.movVel;
+    if(this.pct <= 1.0){
+      this.actualAngle = this.previousAngle + this.pct * (this.newAngle - this.previousAngle);
+      print(this.actualAngle);
+    }
+  }
   move(){
     if(asteroids.length <= 0){
+      this.fixedPos = [mouseX, mouseY];
+      this.previousAngle = this.newAngle;
+      if(!(atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]) < 3.1 && atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]) > 0.1)){
+        this.newAngle = atan2(this.fixedPos[1] - planet.getPos()[1], this.fixedPos[0] - planet.getPos()[0]);
+      }
+      this.pct = 0.0;
       this.fixed = false;
-    }
-    if(asteroids.length > 0 && this.fixed == false){
-      let asteroid = random(asteroids);
-      this.fixedPos = asteroid.getPos();
+    }else if(asteroids.length > 0 && this.fixed == false){
+      this.fixedPos = random(asteroids).getPos();
+      this.previousAngle = this.newAngle;
+      this.newAngle = atan2(this.fixedPos[1] - planet.getPos()[1], this.fixedPos[0] - planet.getPos()[0]);
+      this.pct = 0.0;
       this.fixed = true;
     }
-    if(!(atan2(this.fixedPos[1] - planet.getPos()[1], this.fixedPos[0] - planet.getPos()[0]) < 3.1 && atan2(this.fixedPos[1] - planet.getPos()[1], this.fixedPos[0] - planet.getPos()[0]) > 0.1)){
-      this.newAngle = atan2(this.fixedPos[1] - planet.getPos()[1], this.fixedPos[0] - planet.getPos()[0]);
-      this.x = this.moveX(55, 0);
-      this.y = this.moveY(55, 0);
-    }
+    this.moving();
+    this.x = this.moveX(55, 0);
+    this.y = this.moveY(55, 0);
     for(let i = 0; i < this.bullet.length; i++){
       this.bullet[i].move();
       if((this.bullet[i].getPos()[0] < 0 || this.bullet[i].getPos()[1] < 0) || (this.bullet[i].getPos()[0] > windowWidth || this.bullet[i].getPos()[1] > windowHeight)){
@@ -135,21 +147,7 @@ class Ship{
       }
     }
   }
-  moveX(percent, angle){
-    return planet.getPos()[0] + cos(this.newAngle+angle) * (planet.getSize()*percent/100);
-  }
-  moveY(percent, angle){
-    return planet.getPos()[1] + sin(this.newAngle+angle) * (planet.getSize()*percent/100);
-  }
-  update(){
-    this.x = planet.getPos()[0];
-    this.y = planet.getPos()[1];
-    this.size = (windowWidth*2)/100;
-  }
-  shot(){
-    this.bullet.push(new Bullet());
-  }
-  getPos(){
-    return [this.x, this.y];
+  setMovVel(v){
+    this.MovVel = v;
   }
 }

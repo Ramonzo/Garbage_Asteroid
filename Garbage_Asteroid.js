@@ -28,8 +28,8 @@ let assetsCounter = 0;
 //****PRELOADER****///
 function preload(){
   fontNames = ['hypervipergradital', 'hyperviper', 'hyperviper3d'];
-  imageNames = ['fish', 'flower', 'fly', 'game', 'guy', 'marketcar', 'melt', 'mouse', 'pc', 
-                'phone', 'pill', 'sad', 'shapes', 'slow', 'sound', 'tree', 'verticalshape', 'window'];
+  imageNames = ['fish', 'flower', 'fly', 'game', 'guy', 'marketcar', 'mouse', 'pc', 
+                'phone', 'pill', 'sad', 'shapes', 'slow', 'sound', 'tree', 'window'];
   totalAssets = imageNames.length + fontNames.length + planetImageName.length + floorImageName.length;
 }
 //****SETUP****///

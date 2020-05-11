@@ -61,6 +61,7 @@ function draw() {
       break;
       case 'gameplay':
         evolveWave();
+        shotShips();
         moveThings();
         drawThings();
       break;

@@ -10,6 +10,12 @@ function createAsteroids(w){
     asteroids[i] = new Asteroid();
   }
 }
+function shotShips(){
+  player.shot();
+  for(let i = 0; i < ships.length; i++){
+    ships[i].shot();
+  }
+}
 function moveThings(){
   player.move();
   for(let i = 0; i < asteroids.length; i++){

@@ -5,15 +5,26 @@ class Ship{
     this.y = planet.getPos()[1];
     this.size = (windowWidth*2)/100;
     this.bullet = [];
+    this.fireFlame = 1;
+    this.fixedPos = [mouseX, mouseY];
+    this.previousAngle = 0;
     this.actualAngle = 0;
     this.newAngle = 0;
-    this.fireFlame = 1;
+    this.pct = 0.0;
+    this.fixed = false;
+    this.movVel = 0.01;
   }
   moveX(percent, angle){
     return planet.getPos()[0] + cos(this.actualAngle+angle) * (planet.getSize()*percent/100);
   }
   moveY(percent, angle){
     return planet.getPos()[1] + sin(this.actualAngle+angle) * (planet.getSize()*percent/100);
+  }
+  moving(){
+    this.pct += this.movVel;
+    if(this.pct <= 1.0){
+      this.actualAngle = this.previousAngle + this.pct * (this.newAngle - this.previousAngle);
+    }
   }
   update(){
     this.x = planet.getPos()[0];
@@ -25,6 +36,9 @@ class Ship{
   }
   getPos(){
     return [this.x, this.y];
+  }
+  setMovVel(v){
+    this.MovVel = v;
   }
 }
 //The Player Class
@@ -46,12 +60,25 @@ class Player extends Ship{
     this.fireFlame = -this.fireFlame;
   }
   move(){
-    if(!(atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]) < 3.1 && atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]) > 0.1)){
-      this.actualAngle = this.newAngle;
-      this.newAngle = atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]);
-      this.x = this.moveX(55, 0);
-      this.y = this.moveY(55, 0);
+    print(mouseIsPressed);
+    if(mouseIsPressed || asteroids.length <= 0){
+      this.fixedPos = [mouseX, mouseY];
+      this.previousAngle = this.newAngle;
+      if(!(atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]) < 3.1 && atan2(mouseY - planet.getPos()[1], mouseX - planet.getPos()[0]) > 0.1)){
+        this.newAngle = atan2(this.fixedPos[1] - planet.getPos()[1], this.fixedPos[0] - planet.getPos()[0]);
+      }
+      this.pct = 0.0;
+      this.fixed = false;
+    }else if(asteroids.length > 0 && this.fixed == false){
+      this.fixedPos = random(asteroids).getPos();
+      this.previousAngle = this.newAngle;
+      this.newAngle = atan2(this.fixedPos[1] - planet.getPos()[1], this.fixedPos[0] - planet.getPos()[0]);
+      this.pct = 0.0;
+      this.fixed = true;
     }
+    this.moving();
+    this.x = this.moveX(55, 0);
+    this.y = this.moveY(55, 0);
     for(let i = 0; i < this.bullet.length; i++){
       this.bullet[i].move();
       if((this.bullet[i].getPos()[0] < 0 || this.bullet[i].getPos()[1] < 0) || (this.bullet[i].getPos()[0] > windowWidth || this.bullet[i].getPos()[1] > windowHeight)){
@@ -79,11 +106,6 @@ class Player extends Ship{
 class NpcShip extends Ship{
   constructor(){
     super();
-    this.fixed = false;
-    this.fixedPos = [mouseX, mouseY];
-    this.pct = 0.0;
-    this.movVel = 0.01;
-    this.previousAngle = 0;
   }
   draw(){
     //Draw flame
@@ -97,13 +119,6 @@ class NpcShip extends Ship{
       this.bullet[i].draw();
     }
     this.fireFlame = -this.fireFlame;
-  }
-  moving(){
-    this.pct += this.movVel;
-    if(this.pct <= 1.0){
-      this.actualAngle = this.previousAngle + this.pct * (this.newAngle - this.previousAngle);
-      print(this.actualAngle);
-    }
   }
   move(){
     if(asteroids.length <= 0){
@@ -146,8 +161,5 @@ class NpcShip extends Ship{
         }
       }
     }
-  }
-  setMovVel(v){
-    this.MovVel = v;
   }
 }

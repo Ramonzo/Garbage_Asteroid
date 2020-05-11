@@ -67,6 +67,3 @@ function draw() {
     }
   }
 }
-function mousePressed(){
-  ships.push(new NpcShip());
-}

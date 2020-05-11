@@ -14,6 +14,19 @@ class Ship{
     this.fixed = false;
     this.movVel = 0.01;
   }
+  shipDraw(col){
+    //Draw flame
+    fill(color('#FD9301'));
+    triangle(this.moveX(50+this.fireFlame, 0), this.moveY(50+this.fireFlame, 0), this.moveX(57, -0.1), this.moveY(57, -0.1), this.moveX(57, +0.1), this.moveY(57, +0.1));
+    //Draw ship
+    fill(color(col));
+    triangle(this.moveX(60, 0), this.moveY(60, 0), this.moveX(55, -0.2), this.moveY(55, -0.2), this.moveX(55, +0.2), this.moveY(55, +0.2));
+    fill(255);
+    for(let i = 0; i < this.bullet.length; i++){
+      this.bullet[i].draw();
+    }
+    this.fireFlame = -this.fireFlame;
+  }
   moveX(percent, angle){
     return planet.getPos()[0] + cos(this.actualAngle+angle) * (planet.getSize()*percent/100);
   }
@@ -47,17 +60,7 @@ class Player extends Ship{
     super();
   }
   draw(){
-    //Draw flame
-    fill(color('#FD9301'));
-    triangle(this.moveX(50+this.fireFlame, 0), this.moveY(50+this.fireFlame, 0), this.moveX(57, -0.1), this.moveY(57, -0.1), this.moveX(57, +0.1), this.moveY(57, +0.1));
-    //Draw ship
-    fill(color('#D175B7'));
-    triangle(this.moveX(60, 0), this.moveY(60, 0), this.moveX(55, -0.2), this.moveY(55, -0.2), this.moveX(55, +0.2), this.moveY(55, +0.2));
-    fill(255);
-    for(let i = 0; i < this.bullet.length; i++){
-      this.bullet[i].draw();
-    }
-    this.fireFlame = -this.fireFlame;
+    this.shipDraw('#D175B7');
   }
   move(){
     print(mouseIsPressed);
@@ -108,17 +111,7 @@ class NpcShip extends Ship{
     super();
   }
   draw(){
-    //Draw flame
-    fill(color('#FD9301'));
-    triangle(this.moveX(50+this.fireFlame, 0), this.moveY(50+this.fireFlame, 0), this.moveX(57, -0.1), this.moveY(57, -0.1), this.moveX(57, +0.1), this.moveY(57, +0.1));
-    //Draw ship
-    fill(color('#828F60'));
-    triangle(this.moveX(60, 0), this.moveY(60, 0), this.moveX(55, -0.2), this.moveY(55, -0.2), this.moveX(55, +0.2), this.moveY(55, +0.2));
-    fill(255);
-    for(let i = 0; i < this.bullet.length; i++){
-      this.bullet[i].draw();
-    }
-    this.fireFlame = -this.fireFlame;
+    this.shipDraw('#828F60');
   }
   move(){
     if(asteroids.length <= 0){

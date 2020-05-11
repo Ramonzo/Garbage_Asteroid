@@ -65,9 +65,9 @@ function evolveWave(){
     createAsteroids(wave);
   }
 }
-function status(baseStatus, level){
+function status(baseStatus, level, r){
   //Return total Production -> How damage, velocities or other status I have
-  return (baseStatus*level)*multiplyer;
+  return (baseStatus*level)*(r*prestige);
 }
 function cost(n, b, r, k){
   //n = the number of generators to buy
@@ -90,6 +90,6 @@ function doMultiplyer(){
   //Use this function to evolve the multiplyer when the player do de reset wave count
   //It's possible reset every 50 waves
   if(wave >= 50){
-    multiplyer += multiplyer * int((wave/50));
+    prestige += prestige * int((wave/50));
   }
 }

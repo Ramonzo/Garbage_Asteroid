@@ -3,7 +3,7 @@ let state = 'gameplay';
 let wave = 0;
 let player;
 let ships = [];
-let multiplyer = 0.1;
+let prestige = 0.1;
 let money = 0;
 //****FONT****//
 let loadedFonts = [];
@@ -54,7 +54,7 @@ function setup() {
 }
 //****DRAW****///
 function draw() {
-  background(0);
+  background(color('#04040A'));
   if(loading){
     createLoader();
   }else{

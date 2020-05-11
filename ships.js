@@ -18,15 +18,21 @@ class Ship{
     this.bullet = [];
     //Upgrade Level
     this.movVel = 1;
+    this.movVelGrowth = 1;
     this.bulletVel = 1;
+    this.bulletVelGrowth = 1;
     this.bulletPerSec = 1;
+    this.bulletPerSecGrowth = 1;
     this.bulletDamage = 1;
+    this.bulletDamageGrowth = 1;
   }
   //Draw
-  shipDraw(col){
+  shipModel(col){
     //Draw flame
-    fill(color('#FD9301'));
+    fill(color('#C4A859'));
     triangle(this.moveX(50+this.fireFlame, 0), this.moveY(50+this.fireFlame, 0), this.moveX(57, -0.1), this.moveY(57, -0.1), this.moveX(57, +0.1), this.moveY(57, +0.1));
+    fill(color('#BE3B1E'));
+    triangle(this.moveX(52+this.fireFlame, 0), this.moveY(52+this.fireFlame, 0), this.moveX(57, -0.1), this.moveY(57, -0.1), this.moveX(57, +0.1), this.moveY(57, +0.1));
     //Draw ship
     fill(color(col));
     triangle(this.moveX(60, 0), this.moveY(60, 0), this.moveX(55, -0.2), this.moveY(55, -0.2), this.moveX(55, +0.2), this.moveY(55, +0.2));
@@ -92,44 +98,56 @@ class Ship{
   }
   //Set Upgrade Level
   setMovVel(l){
+    let basePrice = 5;
     if(l > 0){
-      this.movVel += l;
+      if(money > cost(l, basePrice, this.movVelGrowth, this.movVel)){
+        this.movVel += l;
+      }
     }
   }
   setBulletVel(l){
+    let basePrice = 5;
     if(l > 0){
-      this.bulletVel += l;
+      if(money > cost(l, basePrice, this.bulletVelGrowth, this.bulletVel)){
+        this.bulletVel += l;
+      }
     }
   }
   setBulletPerSec(l){
+    let basePrice = 5;
     if(l > 0){
-      this.bulletPerSec += l;
+      if(money > cost(l, basePrice, this.bulletPerSecGrowth, this.bulletPerSec)){
+        this.bulletPerSec += l;
+      }
     }
   }
   setBulletDamage(l){
+    let basePrice = 5;
     if(l > 0){
-      this.bulletDamage += l;
+      if(money > cost(l, basePrice, this.bulletDamageGrowth, this.bulletDamage)){
+        this.bulletDamage += l;
+      }
     }
   }
   //Calculate status value from level
   calcMovVel(){
     let startValue = 0.01;
-    startValue = status(startValue, this.movVel);
+    startValue = status(startValue, this.movVel, this.bulletDamageGrowth);
     return startValue;
   }
   calcBulletVel(){
     let startValue = 0.3;
-    startValue = status(startValue, this.bulletVel);
+    startValue = status(startValue, this.bulletVel, this.bulletDamageGrowth);
     return startValue;
   }
   calcBulletPerSec(){
     let startValue = 1.5;
-    startValue = status(startValue, this.bulletPerSec);
+    startValue = status(startValue, this.bulletPerSec, this.bulletDamageGrowth);
     return 1000/startValue;
   }
   calcBulletDamage(){
     let startValue = 5;
-    startValue = status(startValue, this.bulletDamage);
+    startValue = status(startValue, this.bulletDamage, this.bulletDamageGrowth);
     return startValue;
   }
 }
@@ -139,7 +157,7 @@ class Player extends Ship{
     super();
   }
   draw(){
-    this.shipDraw('#D175B7');
+    this.shipModel('#D175B7');
   }
   move(){
     if(mouseIsPressed){
@@ -172,7 +190,7 @@ class NpcShip extends Ship{
     super();
   }
   draw(){
-    this.shipDraw('#828F60');
+    this.shipModel('#828F60');
   }
   move(){
     if(mouseIsPressed && asteroids.length <= 0){

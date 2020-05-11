@@ -1,9 +1,3 @@
-function evolveWave(){
-  if(asteroids.length <= 0 && planet.getLife() > 0){
-    wave++;
-    createAsteroids(wave);
-  }
-}
 function createAsteroids(w){
   let asteroidCount = 3*w;
   for(let i = 0; i < asteroidCount; i++){
@@ -62,5 +56,40 @@ function windowResized() {
   }
   for(let i = 0; i < ships.length; i++){
     ships[i].update();
+  }
+}
+//Functions to calculate and evolve: wave, buy, and status...
+function evolveWave(){
+  if(asteroids.length <= 0 && planet.getLife() > 0){
+    wave++;
+    createAsteroids(wave);
+  }
+}
+function status(baseStatus, level){
+  //Return total Production -> How damage, velocities or other status I have
+  return (baseStatus*level)*multiplyer;
+}
+function cost(n, b, r, k){
+  //n = the number of generators to buy
+  //b = the base price
+  //r = the price growth rate exponent
+  //k = the number of generators currently owned
+  //Cost based on number quantity to buy x1 - x10 - x100
+  return b*((pow(r, k)*(pow(r, n)-1))/(r-1));
+}
+function maxCost(b, r, k, c){
+  //n = the number of generators to buy
+  //b = the base price
+  //r = the price growth rate exponent
+  //k = the number of generators currently owned
+  //c = the amount of currency owne
+  //Cost based on max I can buy
+  return floor(log(((c*(r-1))/(b*pow(r, k)))+1)/log(r));
+}
+function doMultiplyer(){
+  //Use this function to evolve the multiplyer when the player do de reset wave count
+  //It's possible reset every 50 waves
+  if(wave >= 50){
+    multiplyer += multiplyer * int((wave/50));
   }
 }

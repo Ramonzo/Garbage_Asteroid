@@ -3,6 +3,7 @@ let state = 'gameplay';
 let wave = 0;
 let player;
 let ships = [];
+let multiplyer = 0.1;
 //****FONT****//
 let loadedFonts = [];
 const fontFolder = 'assets/fonts/';

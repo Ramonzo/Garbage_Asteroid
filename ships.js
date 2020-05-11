@@ -1,20 +1,26 @@
 //The All Ship Class, including Player Ship
 class Ship{
   constructor(){
+    //Pos
     this.x = planet.getPos()[0];
     this.y = planet.getPos()[1];
-    this.size = (windowWidth*2)/100;
-    this.bullet = [];
-    this.fireFlame = 1;
     this.fixedPos = [mouseX, mouseY];
     this.previousAngle = 0;
     this.actualAngle = 0;
     this.newAngle = 0;
+    //Configurations
+    this.size = (windowWidth*2)/100;
+    this.fireFlame = 1;
     this.pct = 0.0;
     this.fixed = false;
-    this.movVel = 0.01;
     this.timer = millis();
-    this.bulletTimer = 1000;
+    //Bullets Array
+    this.bullet = [];
+    //Upgrade Level
+    this.movVel = 1;
+    this.bulletVel = 1;
+    this.bulletPerSec = 1;
+    this.bulletDamage = 1;
   }
   //Draw
   shipDraw(col){
@@ -43,7 +49,7 @@ class Ship{
     return planet.getPos()[1] + sin(this.actualAngle+angle) * (planet.getSize()*percent/100);
   }
   moving(){
-    this.pct += this.movVel;
+    this.pct += this.calcMovVel();
     if(this.pct <= 1.0){
       this.actualAngle = this.previousAngle + this.pct * (this.newAngle - this.previousAngle);
     }
@@ -54,15 +60,15 @@ class Ship{
   //Shot and Bullet Functions
   shot(){
     if(asteroids.length > 0){
-      if ((millis() - this.timer) >= this.bulletTimer){
-        this.bullet.push(new Bullet());
+      if ((millis() - this.timer) >= this.calcBulletPerSec()){
+        this.bullet.push(new Bullet(this.calcBulletDamage()));
         this.timer = millis();
       }
     }
   }
   bulletCollision(){
     for(let i = 0; i < this.bullet.length; i++){
-      this.bullet[i].move();
+      this.bullet[i].move(this.calcBulletVel());
       if((this.bullet[i].getPos()[0] < 0 || this.bullet[i].getPos()[1] < 0) || (this.bullet[i].getPos()[0] > windowWidth || this.bullet[i].getPos()[1] > windowHeight)){
         this.bullet.splice(i, 1);
         break;
@@ -84,9 +90,43 @@ class Ship{
       }
     }
   }
-  //Status and Upgrades
-  setMovVel(v){
-    this.MovVel = v;
+  //Set Upgrade Level
+  setMovVel(l){
+    if(l > 0 && l != 1){
+      this.movVel = l;
+    }
+  }
+  setBulletVel(l){
+    if(l > 0 && l != 1){
+    this.bulletVel = l;
+    }
+  }
+  setBulletPerSec(l){
+    if(l > 0 && l != 1){
+    this.bulletPerSec = l;
+    }
+  }
+  setBulletDamage(l){
+    if(l > 0 && l != 1){
+    this.bulletDamage = l;
+    }
+  }
+  //Calculate value from upgrade level
+  calcMovVel(){
+    let startValue = 0.01;
+    return startValue;
+  }
+  calcBulletVel(){
+    let startValue = 0.5;
+    return startValue;
+  }
+  calcBulletPerSec(){
+    let startValue = 1.0;
+    return 1000/startValue;
+  }
+  calcBulletDamage(){
+    let startValue = 10;
+    return startValue;
   }
 }
 //The Player Class

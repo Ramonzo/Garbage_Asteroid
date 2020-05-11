@@ -30,8 +30,6 @@ function moveThings(){
   }
 }
 function drawThings(){
-  planet.draw();
-  floor.draw();
   player.draw();
   for(let i = 0; i < asteroids.length; i++){
     asteroids[i].draw();
@@ -39,6 +37,8 @@ function drawThings(){
   for(let i = 0; i < ships.length; i++){
     ships[i].draw();
   }
+  planet.draw();
+  floor.draw();
 }
 //Function to load assets and make loader works okay
 function loadAsset(){

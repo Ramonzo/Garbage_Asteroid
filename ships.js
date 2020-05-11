@@ -92,40 +92,44 @@ class Ship{
   }
   //Set Upgrade Level
   setMovVel(l){
-    if(l > 0 && l != 1){
-      this.movVel = l;
+    if(l > 0){
+      this.movVel += l;
     }
   }
   setBulletVel(l){
-    if(l > 0 && l != 1){
-    this.bulletVel = l;
+    if(l > 0){
+      this.bulletVel += l;
     }
   }
   setBulletPerSec(l){
-    if(l > 0 && l != 1){
-    this.bulletPerSec = l;
+    if(l > 0){
+      this.bulletPerSec += l;
     }
   }
   setBulletDamage(l){
-    if(l > 0 && l != 1){
-    this.bulletDamage = l;
+    if(l > 0){
+      this.bulletDamage += l;
     }
   }
-  //Calculate value from upgrade level
+  //Calculate status value from level
   calcMovVel(){
     let startValue = 0.01;
+    startValue = status(startValue, this.movVel);
     return startValue;
   }
   calcBulletVel(){
-    let startValue = 0.5;
+    let startValue = 0.3;
+    startValue = status(startValue, this.bulletVel);
     return startValue;
   }
   calcBulletPerSec(){
-    let startValue = 1.0;
+    let startValue = 1.5;
+    startValue = status(startValue, this.bulletPerSec);
     return 1000/startValue;
   }
   calcBulletDamage(){
-    let startValue = 10;
+    let startValue = 5;
+    startValue = status(startValue, this.bulletDamage);
     return startValue;
   }
 }

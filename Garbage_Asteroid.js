@@ -4,6 +4,7 @@ let wave = 0;
 let player;
 let ships = [];
 let multiplyer = 0.1;
+let money = 0;
 //****FONT****//
 let loadedFonts = [];
 const fontFolder = 'assets/fonts/';

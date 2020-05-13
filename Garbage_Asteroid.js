@@ -1,5 +1,5 @@
 //****GAME CONFIGURATIONS****//
-let state = 'gameplay';
+let state = 'menu';
 let wave = 0;
 let player;
 let ships = [];
@@ -57,7 +57,6 @@ function draw() {
   background(color('#04040A'));
   if(loading){
     countLoader();
-    createLoader();
   }else{
     switch(state){
       case 'menu':

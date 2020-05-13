@@ -37,8 +37,11 @@ function drawThings(){
 //Function to load assets and make loader works okay
 function countLoader(p = assetsCounter/totalAssets){
   print((p*100).toFixed(0) + '% CARREGADO');
+  createLoader();
   if(assetsCounter >= totalAssets){
     loading = false;
+    let loader = select('.loader-container');
+    //loader.style('display', 'none');
   }
 }
 function loadAsset(){

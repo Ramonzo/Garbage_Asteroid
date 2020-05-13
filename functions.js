@@ -35,6 +35,12 @@ function drawThings(){
   floor.draw();
 }
 //Function to load assets and make loader works okay
+function countLoader(p = assetsCounter/totalAssets){
+  print((p*100).toFixed(0) + '% CARREGADO');
+  if(assetsCounter >= totalAssets){
+    loading = false;
+  }
+}
 function loadAsset(){
   for(let i = 0; i < imageNames.length; i++){
     loadedImages.push(loadImage(imgFolder+imageNames[i]+imgFormat, img => {assetsCounter++;}));

@@ -56,6 +56,7 @@ function setup() {
 function draw() {
   background(color('#04040A'));
   if(loading){
+    countLoader();
     createLoader();
   }else{
     switch(state){

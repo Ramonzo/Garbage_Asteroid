@@ -1,5 +1,6 @@
 //****GAME CONFIGURATIONS****//
 let state = 'menu';
+let pause = true;
 let wave = 0;
 let player;
 let ships = [];
@@ -54,14 +55,17 @@ function setup() {
 }
 //****DRAW****///
 function draw() {
-  background(color('#04040A'));
   if(loading){
+    background(color('#010317'));
     countLoader();
   }else{
     switch(state){
       case 'menu':
+        background(color('#010317'));
+        createMenu();
       break;
       case 'gameplay':
+        background(color('#04040A'));
         evolveWave();
         shotShips();
         moveThings();

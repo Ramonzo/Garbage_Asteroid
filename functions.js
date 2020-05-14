@@ -1,3 +1,9 @@
+function startGame(){
+  let menu = select('.menu-container');
+  menu.style('display', 'none');
+  state = 'gameplay';
+  pause = false;
+}
 function createAsteroids(w){
   let asteroidCount = 3*w;
   for(let i = 0; i < asteroidCount; i++){
@@ -41,15 +47,17 @@ function countLoader(p = assetsCounter/totalAssets){
   if(assetsCounter >= totalAssets){
     loading = false;
     let loader = select('.loader-container');
-    //loader.style('display', 'none');
+    loader.style('display', 'none');
+    createMenu();
   }
 }
 function loadAsset(){
-  for(let i = 0; i < imageNames.length; i++){
-    loadedImages.push(loadImage(imgFolder+imageNames[i]+imgFormat, img => {assetsCounter++;}));
-  }
+  createLoader();
   for(let i = 0; i < fontNames.length; i++){
     loadedFonts.push(loadFont(fontFolder+fontNames[i]+fontFormat, font => {assetsCounter++;}));
+  }
+  for(let i = 0; i < imageNames.length; i++){
+    loadedImages.push(loadImage(imgFolder+imageNames[i]+imgFormat, img => {assetsCounter++;}));
   }
   planetImage = loadImage(imgFolder+planetImageName[0]+imgFormat, img => {assetsCounter++;});
   floorImage = loadImage(imgFolder+floorImageName[0]+imgFormat, img => {assetsCounter++;});

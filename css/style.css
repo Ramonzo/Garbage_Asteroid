@@ -1,16 +1,23 @@
 /* W3SCHOOL MEDIA QUERY https://www.w3schools.com/cssref/css3_pr_mediaquery.asp */
 /*
-CSS para tags HTML
+	CSS para tags HTML
 */
-body { 
+@font-face {
+	font-family: "hypervipergradital";
+	src: url("../assets/fonts/hypervipergradital.ttf");
+}
+body {
+	font-family: "hypervipergradital";
 	padding: 0;
 	margin: 0;
+}
+canvas{
+	position: absolute;
 }
 a{
 	text-decoration: none;
 	color:inherit;
-} 
-button, 
+}
 div,
 input, select,
 h1, h2, h3, h4, h5, h6, 
@@ -19,28 +26,40 @@ span,
 a{
 	font-family: inherit;
 }
+button{
+	font-family: Arial, Helvetica, sans-serif;
+	border: 0.2vw solid #E94090;
+	color: #E94090;
+	background-color: transparent;
+}
+img{
+	width: inherit;
+}
+.border{
+	border: 0.2vw solid #E94090;
+}
+/*Loader*/
 .loader-container{
-	position: absolute;
-	top: 10%;
-	left: 25%;
+	position: relative;
+	margin: 0 auto;
+	color: white;
+	font-size: 4vw;
 	width: 50%;
 	height: 30%;
-	font-size: 2.5em;
-	color: white;
+	top: 5%;
 }
 .load-img{
-	width: 100%;
 	text-align: center;
+	width: 100%;
 	margin-bottom: 20%;
 }
 .load-img img{
 	width: 80%;
 }
 .loaderbar-content{
-	border: 0.2vw solid #E94090;
-	width: 100%;
-	height: 30%;
 	text-align: center;
+	width: 100%;
+	height: 5vw;
 }
 .loaderbar-content p{
 	position: absolute;
@@ -50,25 +69,89 @@ a{
 .loaderbar{
 	position: absolute;
 	background-color: #EA4150;
-	height: inherit;
 	text-align: center;
-
+	height: inherit;
+}
+/*Title Model*/
+.title-group{
+	width: 100%;
+	margin: 0 auto;
+}
+.small-text{
+	color: #E94090;
+	left: 0;
+	margin: 0;
+}
+.big-text{
+	text-align: center;
+	color: white;
+	margin: 0;
+	margin-bottom: .6em;
+}
+/*Menu*/
+.menu-container{
+	position: relative;
+	color: white;
+	margin: 0 auto;
+}
+.menu-bg{
+	position: fixed;
+	opacity: .5;
+}
+.menu-img{
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+.menu-content{
+	position: relative;
+	background-color: #222543;
+	margin: 0 auto;
+}
+.menu-button{
+	width: 100%;
 }
 @media screen and (min-width: 320px) and (max-width: 767px){
-
 }
 @media screen and (min-width: 768px){
-
 }
 @media screen and (min-width: 320px)  and (max-width: 767px) and (orientation: landscape) {
-
 }
 @media screen and (min-width: 768px)  and (max-width: 993px) and (orientation: landscape) {
-
 }
 @media screen and (min-width: 992px) and (orientation: landscape) {
-
 }
 @media screen and (min-width: 993px){
-
+	/*Title Model*/
+	.small-text{
+		font-size: 2vw;
+	}
+	.big-text{
+		line-height: 4vw;
+		font-size: 7vw;
+	}
+	/*Menu*/
+	.menu-container{
+		font-size: 4vw;
+		width: 55%;
+		height: 30%;
+		top: 5%;
+	}
+	.menu-bg{
+		left: -20%;
+		bottom: -30%;
+		width: 16em;
+	}
+	.menu-img{
+		margin-bottom: 5%;
+	}
+	.menu-content{
+		width: 60%;
+		padding: .3em;
+	}
+	.menu-button{
+		height: 40px;
+		margin: .5em 0;
+		font-size: 2vw;
+	}
 }

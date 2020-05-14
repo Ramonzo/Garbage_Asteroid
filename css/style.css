@@ -112,12 +112,140 @@ img{
 	width: 100%;
 }
 @media screen and (min-width: 320px) and (max-width: 767px){
+	/*Title Model*/
+	.small-text{
+		font-size: 5vw;
+	}
+	.big-text{
+		line-height: 4.5vw;
+		font-size: 9vw;
+	}
+	/*Menu*/
+	.menu-container{
+		font-size: 4vw;
+		width: 95%;
+		height: 30%;
+		top: 15%;
+	}
+	.menu-bg{
+		left: -25%;
+		top: 30%;
+		width: 30em;
+	}
+	.menu-img{
+		margin-bottom: 5%;
+	}
+	.menu-content{
+		width: 60%;
+		padding: .3em;
+	}
+	.menu-button{
+		height: 40px;
+		margin: .5em 0;
+		font-size: 5vw;
+	}
 }
 @media screen and (min-width: 768px){
+	/*Title Model*/
+	.small-text{
+		font-size: 2vw;
+	}
+	.big-text{
+		line-height: 4vw;
+		font-size: 7vw;
+	}
+	/*Menu*/
+	.menu-container{
+		font-size: 4vw;
+		width: 55%;
+		height: 30%;
+		top: 15%;
+	}
+	.menu-bg{
+		left: -20%;
+		top: 20%;
+		width: 20em;
+	}
+	.menu-img{
+		margin-bottom: 5%;
+	}
+	.menu-content{
+		width: 60%;
+		padding: .3em;
+	}
+	.menu-button{
+		height: 40px;
+		margin: .5em 0;
+		font-size: 3vw;
+	}
 }
 @media screen and (min-width: 320px)  and (max-width: 767px) and (orientation: landscape) {
+	/*Title Model*/
+	.small-text{
+		font-size: 2vw;
+	}
+	.big-text{
+		line-height: 4vw;
+		font-size: 7vw;
+	}
+	/*Menu*/
+	.menu-container{
+		font-size: 4vw;
+		width: 55%;
+		height: 30%;
+		top: 5%;
+	}
+	.menu-bg{
+		left: -20%;
+		top: 15%;
+		width: 18em;
+	}
+	.menu-img{
+		margin-bottom: 5%;
+	}
+	.menu-content{
+		width: 60%;
+		padding: .3em;
+	}
+	.menu-button{
+		height: 40px;
+		margin: .5em 0;
+		font-size: 3vw;
+	}
 }
 @media screen and (min-width: 768px)  and (max-width: 993px) and (orientation: landscape) {
+	/*Title Model*/
+	.small-text{
+		font-size: 2vw;
+	}
+	.big-text{
+		line-height: 4vw;
+		font-size: 7vw;
+	}
+	/*Menu*/
+	.menu-container{
+		font-size: 4vw;
+		width: 55%;
+		height: 30%;
+		top: 2%;
+	}
+	.menu-bg{
+		left: -20%;
+		top: 15%;
+		width: 18em;
+	}
+	.menu-img{
+		margin-bottom: 2%;
+	}
+	.menu-content{
+		width: 60%;
+		padding: .3em;
+	}
+	.menu-button{
+		height: 40px;
+		margin: .5em 0;
+		font-size: 3vw;
+	}
 }
 @media screen and (min-width: 992px) and (orientation: landscape) {
 }
@@ -139,7 +267,7 @@ img{
 	}
 	.menu-bg{
 		left: -20%;
-		bottom: -30%;
+		top: 20%;
 		width: 16em;
 	}
 	.menu-img{

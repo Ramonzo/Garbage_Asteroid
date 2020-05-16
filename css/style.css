@@ -111,6 +111,15 @@ img{
 .menu-button{
 	width: 100%;
 }
+/*In GAME LAYOUT*/
+.pauser{
+	position: relative;
+    float: right;
+    margin: .8em;
+    width: 5vw;
+    height: 5vw;
+}
+/* RESPONSIVE MEDIA QUERY */
 @media screen and (min-width: 320px) and (max-width: 767px){
 	/*Title Model*/
 	.small-text{
@@ -143,6 +152,10 @@ img{
 		height: 40px;
 		margin: .5em 0;
 		font-size: 5vw;
+	}
+	/*In GAME LAYOUT*/
+	.pause-menu{
+		top: 25% !important;
 	}
 }
 @media screen and (min-width: 768px){
@@ -178,6 +191,10 @@ img{
 		margin: .5em 0;
 		font-size: 3vw;
 	}
+	/*In GAME LAYOUT*/
+	.pause-menu{
+		top: 25% !important;
+	}
 }
 @media screen and (min-width: 320px)  and (max-width: 767px) and (orientation: landscape) {
 	/*Title Model*/
@@ -211,6 +228,10 @@ img{
 		height: 40px;
 		margin: .5em 0;
 		font-size: 3vw;
+	}
+	/*In GAME LAYOUT*/
+	.pause-menu{
+		top: 15% !important;
 	}
 }
 @media screen and (min-width: 768px)  and (max-width: 993px) and (orientation: landscape) {
@@ -246,9 +267,13 @@ img{
 		margin: .5em 0;
 		font-size: 3vw;
 	}
+	/*In GAME LAYOUT*/
+	.pause-menu{
+		top: 12% !important;
+	}
 }
-@media screen and (min-width: 992px) and (orientation: landscape) {
-}
+/*@media screen and (min-width: 992px) and (orientation: landscape) {
+}*/
 @media screen and (min-width: 993px){
 	/*Title Model*/
 	.small-text{
@@ -281,5 +306,9 @@ img{
 		height: 40px;
 		margin: .5em 0;
 		font-size: 2vw;
+	}
+	/*In GAME LAYOUT*/
+	.pause-menu{
+		top: 25% !important;
 	}
 }

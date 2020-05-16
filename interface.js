@@ -89,25 +89,43 @@ function createLoader(){
     //Load Bar
     let loaderbar_content = createDiv().addClass('loaderbar-content border');
     loaderbar_content.child(createDiv().addClass('loaderbar'));
-    let percentLoader = createSpan('0%').addClass('percent-loader');
-    let loaderText = createP();
-    loaderText.child(percentLoader);
-    loaderText.html(' Carregado', true);
-    loaderbar_content.child(loaderText);
+    let percentLoader = createP('0% Carregado').addClass('percent-loader');
+    loaderbar_content.child(percentLoader);
     container.child(loaderbar_content);
   }else{
     //Updating load bar size
     let loaderbar = select('.loaderbar');
     let percentLoader = select('.percent-loader');
-    percentLoader.html(int((assetsCounter/totalAssets)*100)+'%');
+    percentLoader.html(int((assetsCounter/totalAssets)*100)+'% Carregado');
     loaderbar.style('width', (assetsCounter/totalAssets)*100+'%');
   }
 }
+//Creating pause button interface
 function createPauser(){
   let pauser = select('.pauser');
   if(!pauser){
     pauser = new ButtonDOM('pause', pauseGame, 'pauser');
   }else{
     pauser.style('display', 'block');
+  }
+}
+//Pause menu
+function createPauseMenu(){
+  let pause_menu = select('.pause-menu');
+  if(!pause_menu){
+    let container = createDiv().addClass('pause-menu menu-container');
+    let menu_content = createDiv().addClass('menu-content');
+    let title = new TitleDOM('everybody', 'stop');
+    menu_content.child(title.getNode());
+    let menu_button = new ButtonDOM('voltar', returnGame, 'menu-button');
+    menu_content.child(menu_button.getNode());
+    menu_button = new ButtonDOM('instruções', startGame, 'menu-button');
+    menu_content.child(menu_button.getNode());
+    menu_button = new ButtonDOM('sair', returnMenu, 'menu-button');
+    menu_content.child(menu_button.getNode());
+    container.child(menu_content);
+    container.style('display', 'none');
+  }else{
+    pause_menu.style('display', 'block');
   }
 }

@@ -65,11 +65,15 @@ function draw() {
         createMenu();
       break;
       case 'gameplay':
-        background(color('#04040A'));
-        evolveWave();
-        shotShips();
-        moveThings();
-        drawThings();
+        if(pause == false){
+          background(color('#04040A'));
+          evolveWave();
+          shotShips();
+          moveThings();
+          drawThings();
+        }else if(pause == true){
+          background(color('#010317'));
+        }
       break;
     }
   }

@@ -3,10 +3,24 @@ function startGame(){
   menu.style('display', 'none');
   state = 'gameplay';
   pause = false;
+  createPauser();
+  createPauseMenu();
 }
 function pauseGame(){
+  pause = true;
+  let pauser = select('.pauser');
+  pauser.style('display', 'none');
+  let pause_menu = select('.pause-menu');
+  pause_menu.style('display', 'block');
 }
 function returnGame(){
+  pause = false;
+  let pauser = select('.pauser');
+  pauser.style('display', 'block');
+  let pause_menu = select('.pause-menu');
+  pause_menu.style('display', 'none');
+}
+function returnMenu(){
 }
 function createAsteroids(w){
   let asteroidCount = 3*w;

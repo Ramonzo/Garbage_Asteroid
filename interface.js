@@ -89,11 +89,25 @@ function createLoader(){
     //Load Bar
     let loaderbar_content = createDiv().addClass('loaderbar-content border');
     loaderbar_content.child(createDiv().addClass('loaderbar'));
-    loaderbar_content.child(createP('Carregando'));
+    let percentLoader = createSpan('0%').addClass('percent-loader');
+    let loaderText = createP();
+    loaderText.child(percentLoader);
+    loaderText.html(' Carregado', true);
+    loaderbar_content.child(loaderText);
     container.child(loaderbar_content);
   }else{
     //Updating load bar size
     let loaderbar = select('.loaderbar');
+    let percentLoader = select('.percent-loader');
+    percentLoader.html(int((assetsCounter/totalAssets)*100)+'%');
     loaderbar.style('width', (assetsCounter/totalAssets)*100+'%');
+  }
+}
+function createPauser(){
+  let pauser = select('.pauser');
+  if(!pauser){
+    pauser = new ButtonDOM('pause', pauseGame, 'pauser');
+  }else{
+    pauser.style('display', 'block');
   }
 }

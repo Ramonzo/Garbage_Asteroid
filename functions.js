@@ -4,6 +4,10 @@ function startGame(){
   state = 'gameplay';
   pause = false;
 }
+function pauseGame(){
+}
+function returnGame(){
+}
 function createAsteroids(w){
   let asteroidCount = 3*w;
   for(let i = 0; i < asteroidCount; i++){

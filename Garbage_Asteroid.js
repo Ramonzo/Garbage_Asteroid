@@ -41,13 +41,13 @@ function setup() {
   imageMode(CENTER);
   rectMode(CENTER);
   noStroke();
-  //Configure css para o body
-  var body = select('body');
-  body.style('font-family', fontNames[0]);
   //Set Canvas
   var canvas = createCanvas(windowWidth, windowHeight);
   //LOADER//
   loadAsset(); //Execute first
+  //Configure css para o body
+  var body = select('body');
+  body.style('font-family', fontNames[0]);
   //Call Classes
   planet = new Planet();
   player = new Player();
